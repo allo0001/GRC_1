@@ -59,7 +59,12 @@ EXEC	@return_value = [dbo].[ORD_SetOrderTemplateConnection]
 		@ConnectionActiveFlag = 1,
 		@Sort = 1 --
 
+---------------------------------------------------------------------------------------------------------------------------------------
 --Параметры и группы
+
+--------------------------
+-- 1_1_1 Створка
+--------------------------
 EXEC @return_value = [dbo].[ORD_SetOrderTemplatePGroup]
    @ErrorMessage = @ErrorMessage OUTPUT,   
    @OrderGUID = NULL,   @OrderExID = N'PS1_1',   --!!!
@@ -123,6 +128,73 @@ EXEC @return_value = [dbo].[ORD_SetOrderTemplatesParameter]
 	@ParameterExID = N'PS1_1_1_7',
 	@ParameterSort = 8
 
+--------------------------
+-- 1_1_2 Пресс-крышка
+--------------------------
+EXEC @return_value = [dbo].[ORD_SetOrderTemplatePGroup]
+   @ErrorMessage = @ErrorMessage OUTPUT,   
+   @OrderGUID = NULL,   @OrderExID = N'PS1_1',   --!!!
+   @PGroupID = NULL,   @PGroupExID = N'PS1_1_2', --!!! 
+   @PGroupSort = 1,    --!!!
+   @OperationActiveFlag = 1
+
+EXEC @return_value = [dbo].[ORD_SetOrderTemplatesParameter]
+	@ErrorMessage = @ErrorMessage OUTPUT, 
+	@OrderGUID = NULL, @ParameterID = NULL,  @ParameterRequired = 1, @ParameterActiveFlag = 1, @PGroupID = NULL, @PGroupExID = NULL,
+	@OrderExID = N'PS1_1',
+	@ParameterExID = N'PS1_1_2_1',
+	@ParameterSort = 1
+
+EXEC @return_value = [dbo].[ORD_SetOrderTemplatesParameter]
+	@ErrorMessage = @ErrorMessage OUTPUT, 
+	@OrderGUID = NULL, @ParameterID = NULL,  @ParameterRequired = 1, @ParameterActiveFlag = 1, @PGroupID = NULL, @PGroupExID = NULL,
+	@OrderExID = N'PS1_1',
+	@ParameterExID = N'PS1_1_2_2',
+	@ParameterSort = 2
+
+EXEC @return_value = [dbo].[ORD_SetOrderTemplatesParameter]
+	@ErrorMessage = @ErrorMessage OUTPUT, 
+	@OrderGUID = NULL, @ParameterID = NULL,  @ParameterRequired = 1, @ParameterActiveFlag = 1, @PGroupID = NULL, @PGroupExID = NULL,
+	@OrderExID = N'PS1_1',
+	@ParameterExID = N'PS1_1_2_3',
+	@ParameterSort = 3
+
+EXEC @return_value = [dbo].[ORD_SetOrderTemplatesParameter]
+	@ErrorMessage = @ErrorMessage OUTPUT, 
+	@OrderGUID = NULL, @ParameterID = NULL,  @ParameterRequired = 1, @ParameterActiveFlag = 1, @PGroupID = NULL, @PGroupExID = NULL,
+	@OrderExID = N'PS1_1',
+	@ParameterExID = N'PS1_1_2_4',
+	@ParameterSort = 4
+	
+EXEC @return_value = [dbo].[ORD_SetOrderTemplatesParameter]
+	@ErrorMessage = @ErrorMessage OUTPUT, 
+	@OrderGUID = NULL, @ParameterID = NULL,  @ParameterRequired = 1, @ParameterActiveFlag = 1, @PGroupID = NULL, @PGroupExID = NULL,
+	@OrderExID = N'PS1_1',
+	@ParameterExID = N'PS1_1_2_5',
+	@ParameterSort = 5
+	
+EXEC @return_value = [dbo].[ORD_SetOrderTemplatesParameter]
+	@ErrorMessage = @ErrorMessage OUTPUT, 
+	@OrderGUID = NULL, @ParameterID = NULL,  @ParameterRequired = 1, @ParameterActiveFlag = 1, @PGroupID = NULL, @PGroupExID = NULL,
+	@OrderExID = N'PS1_1',
+	@ParameterExID = N'PS1_1_2_6_1',
+	@ParameterSort = 6
+	
+EXEC @return_value = [dbo].[ORD_SetOrderTemplatesParameter]
+	@ErrorMessage = @ErrorMessage OUTPUT, 
+	@OrderGUID = NULL, @ParameterID = NULL,  @ParameterRequired = 1, @ParameterActiveFlag = 1, @PGroupID = NULL, @PGroupExID = NULL,
+	@OrderExID = N'PS1_1',
+	@ParameterExID = N'PS1_1_2_6_2',
+	@ParameterSort = 7
+	
+EXEC @return_value = [dbo].[ORD_SetOrderTemplatesParameter]
+	@ErrorMessage = @ErrorMessage OUTPUT, 
+	@OrderGUID = NULL, @ParameterID = NULL,  @ParameterRequired = 1, @ParameterActiveFlag = 1, @PGroupID = NULL, @PGroupExID = NULL,
+	@OrderExID = N'PS1_1',
+	@ParameterExID = N'PS1_1_2_7',
+	@ParameterSort = 8
+
+
 
 --------------------------------------------------------------------------------
 --2 Толкатель
@@ -150,6 +222,7 @@ EXEC	@return_value = [dbo].[ORD_SetOrderTemplateConnection]
 		@ChildOrderExID = N'PS1_2', --
 		@ConnectionActiveFlag = 1,
 		@Sort = 2 --
+
 
 --3 Трамбовка
 set @OrderGUID = null
