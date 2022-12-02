@@ -43,7 +43,7 @@ set @OrderExID =  N'PS1_1'
 -- Группы параметров
 	--параметры в группу
 -----------------------------------------------------------------------------------------------------
--- 1_1_1 Створка
+-- 1_1_3 Пол камеры
 -----------------------------------------------------------------------------------------------------
 set @PGroupName = N'Пол камеры'
 set @PGroupExID = N'PS1_1_3'
@@ -71,9 +71,9 @@ EXEC @return_value = [dbo].[ORD_SetOrderTemplatePGroup]
    @OperationActiveFlag = 1
 
 -----------------------------------------------------------------------------------------------------
---Параметры 1_1_1
+--Параметры 1_1_3
 -----------------------------------------------------------------------------------------------------
---1_1_1_1
+--1_1_3_1
 set @ParameterName = N'Трещины'
 set @ParameterExID = N'PS1_1_3_1'
 set @tmp_ParameterExID = null
@@ -110,7 +110,7 @@ EXEC @return_value = [dbo].[PAR_SetParametersValue]
     @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,     
 	@ParameterValueExID = N'1',   @ParameterID = NULL,       
 	@ParameterExID = @ParameterExID,   
-	@ParameterValueStr = N'Норма',     
+	@ParameterValueStr = N'Да',     
 	@ParameterValueDecimal = 1,   @ParameterValueSort = 1,   @ActiveFlag = 1;
 	
 set @ParameterValueGUID = null;	  
@@ -118,7 +118,7 @@ EXEC @return_value = [dbo].[PAR_SetParametersValue]
     @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,    
 	@ParameterValueExID = N'2',   @ParameterID = NULL,     
 	@ParameterExID = @ParameterExID,   
-	@ParameterValueStr = N'Отклонение',      
+	@ParameterValueStr = N'Нет',      
 	@ParameterValueDecimal = 2,   @ParameterValueSort = 2,   @ActiveFlag = 1;
 
 -- парамер в группу
@@ -137,7 +137,7 @@ EXEC @return_value = [dbo].[ORD_SetOrderTemplatesParameter]
 	@ParameterSort = @sort
 
 -----------------------------------------------------------------------------------------------------
---1_1_1_2
+--1_1_3_2
 set @ParameterName = N'Износ верхней кромки'
 set @ParameterExID = N'PS1_1_3_2'
 set @tmp_ParameterExID = null
@@ -174,7 +174,7 @@ EXEC @return_value = [dbo].[PAR_SetParametersValue]
     @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,     
 	@ParameterValueExID = N'1',   @ParameterID = NULL,       
 	@ParameterExID = @ParameterExID,   
-	@ParameterValueStr = N'Норма',     
+	@ParameterValueStr = N'Да',     
 	@ParameterValueDecimal = 1,   @ParameterValueSort = 1,   @ActiveFlag = 1;
 	
 set @ParameterValueGUID = null;	  
@@ -182,7 +182,7 @@ EXEC @return_value = [dbo].[PAR_SetParametersValue]
     @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,    
 	@ParameterValueExID = N'2',   @ParameterID = NULL,     
 	@ParameterExID = @ParameterExID,   
-	@ParameterValueStr = N'Отклонение',      
+	@ParameterValueStr = N'Нет',      
 	@ParameterValueDecimal = 2,   @ParameterValueSort = 2,   @ActiveFlag = 1;
 
 -- парамер в группу
@@ -201,7 +201,7 @@ EXEC @return_value = [dbo].[ORD_SetOrderTemplatesParameter]
 	@ParameterSort = @sort
   
 -----------------------------------------------------------------------------------------------------  
---1_1_1_3
+--1_1_3_3
 set @ParameterName =N'Вмятины'
 set @ParameterExID = N'PS1_1_3_3'
 set @tmp_ParameterExID = null
@@ -238,7 +238,7 @@ EXEC @return_value = [dbo].[PAR_SetParametersValue]
     @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,     
 	@ParameterValueExID = N'1',   @ParameterID = NULL,       
 	@ParameterExID = @ParameterExID,   
-	@ParameterValueStr = N'Норма',     
+	@ParameterValueStr = N'Да',     
 	@ParameterValueDecimal = 1,   @ParameterValueSort = 1,   @ActiveFlag = 1;
 	
 set @ParameterValueGUID = null;	  
@@ -246,7 +246,7 @@ EXEC @return_value = [dbo].[PAR_SetParametersValue]
     @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,    
 	@ParameterValueExID = N'2',   @ParameterID = NULL,     
 	@ParameterExID = @ParameterExID,   
-	@ParameterValueStr = N'Отклонение',      
+	@ParameterValueStr = N'Нет',      
 	@ParameterValueDecimal = 2,   @ParameterValueSort = 2,   @ActiveFlag = 1;
 
 -- парамер в группу
@@ -265,7 +265,7 @@ EXEC @return_value = [dbo].[ORD_SetOrderTemplatesParameter]
 	@ParameterSort = @sort
 
 -----------------------------------------------------------------------------------------------------  
---1_1_1_4
+--1_1_3_4
 set @ParameterName = N'Потеря геометрии'
 set @ParameterExID = N'PS1_1_3_4'
 set @tmp_ParameterExID = null
@@ -302,7 +302,7 @@ EXEC @return_value = [dbo].[PAR_SetParametersValue]
     @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,     
 	@ParameterValueExID = N'1',   @ParameterID = NULL,       
 	@ParameterExID = @ParameterExID,   
-	@ParameterValueStr = N'Норма',     
+	@ParameterValueStr = N'Да',     
 	@ParameterValueDecimal = 1,   @ParameterValueSort = 1,   @ActiveFlag = 1;
 	
 set @ParameterValueGUID = null;	  
@@ -310,7 +310,7 @@ EXEC @return_value = [dbo].[PAR_SetParametersValue]
     @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,    
 	@ParameterValueExID = N'2',   @ParameterID = NULL,     
 	@ParameterExID = @ParameterExID,   
-	@ParameterValueStr = N'Отклонение',      
+	@ParameterValueStr = N'Нет',      
 	@ParameterValueDecimal = 2,   @ParameterValueSort = 2,   @ActiveFlag = 1;
 
 -- парамер в группу
@@ -328,7 +328,7 @@ EXEC @return_value = [dbo].[ORD_SetOrderTemplatesParameter]
 	@ParameterExID = @ParameterExID,
 	@ParameterSort = @sort
 ----------------------------------------------------------------------------------------------------- 
---1_1_1_5
+--1_1_3_5
 set @ParameterName = N'Петли износ'
 set @ParameterExID = N'PS1_1_3_5'
 set @tmp_ParameterExID = null
@@ -365,7 +365,7 @@ EXEC @return_value = [dbo].[PAR_SetParametersValue]
     @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,     
 	@ParameterValueExID = N'1',   @ParameterID = NULL,       
 	@ParameterExID = @ParameterExID,   
-	@ParameterValueStr = N'Норма',     
+	@ParameterValueStr = N'Да',     
 	@ParameterValueDecimal = 1,   @ParameterValueSort = 1,   @ActiveFlag = 1;
 	
 set @ParameterValueGUID = null;	  
@@ -373,7 +373,7 @@ EXEC @return_value = [dbo].[PAR_SetParametersValue]
     @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,    
 	@ParameterValueExID = N'2',   @ParameterID = NULL,     
 	@ParameterExID = @ParameterExID,   
-	@ParameterValueStr = N'Отклонение',      
+	@ParameterValueStr = N'Нет',      
 	@ParameterValueDecimal = 2,   @ParameterValueSort = 2,   @ActiveFlag = 1;
 
 -- парамер в группу
@@ -392,7 +392,7 @@ EXEC @return_value = [dbo].[ORD_SetOrderTemplatesParameter]
 	@ParameterSort = @sort
 
 ----------------------------------------------------------------------------------------------------- 
---1_1_1_7
+--1_1_3_6
 set @ParameterName = N'Прочие дефекты'
 set @ParameterExID = N'PS1_1_3_6'
 set @tmp_ParameterExID = null
@@ -429,7 +429,7 @@ EXEC @return_value = [dbo].[PAR_SetParametersValue]
     @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,     
 	@ParameterValueExID = N'1',   @ParameterID = NULL,       
 	@ParameterExID = @ParameterExID,   
-	@ParameterValueStr = N'Норма',     
+	@ParameterValueStr = N'Да',     
 	@ParameterValueDecimal = 1,   @ParameterValueSort = 1,   @ActiveFlag = 1;
 	
 set @ParameterValueGUID = null;	  
@@ -437,7 +437,7 @@ EXEC @return_value = [dbo].[PAR_SetParametersValue]
     @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,    
 	@ParameterValueExID = N'2',   @ParameterID = NULL,     
 	@ParameterExID = @ParameterExID,   
-	@ParameterValueStr = N'Отклонение',      
+	@ParameterValueStr = N'Нет',      
 	@ParameterValueDecimal = 2,   @ParameterValueSort = 2,   @ActiveFlag = 1;
 
 -- парамер в группу
@@ -455,7 +455,7 @@ EXEC @return_value = [dbo].[ORD_SetOrderTemplatesParameter]
 	@ParameterExID = @ParameterExID,
 	@ParameterSort = @sort
 ----------------------------------------------------------------------------------------------------- 
---КОНЕЦ ГРУППЫ ПАРАМЕТРОВ 1_1_1
+--КОНЕЦ ГРУППЫ ПАРАМЕТРОВ 1_1_3
 -----------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------
 --Проверки

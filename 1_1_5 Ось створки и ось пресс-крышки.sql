@@ -43,10 +43,10 @@ set @OrderExID =  N'PS1_1'
 -- Группы параметров
 	--параметры в группу
 -----------------------------------------------------------------------------------------------------
--- 1_1_1 Створка
+-- 1_1_5 Ось створки и ось пресс-крышки
 -----------------------------------------------------------------------------------------------------
-set @PGroupName = N'Пресс-крышка'
-set @PGroupExID = N'PS1_1_2'
+set @PGroupName = N'Ось створки и ось пресс-крышки'
+set @PGroupExID = N'PS1_1_5'
 set @sort = 1
 
 select  @tmp_PGroupExID = PGroupExID from PAR_PGroups where PGroupName = @PGroupName
@@ -71,11 +71,11 @@ EXEC @return_value = [dbo].[ORD_SetOrderTemplatePGroup]
    @OperationActiveFlag = 1
 
 -----------------------------------------------------------------------------------------------------
---Параметры 1_1_1
+--Параметры 1_1_5
 -----------------------------------------------------------------------------------------------------
---1_1_1_1
-set @ParameterName = N'Трещины'
-set @ParameterExID = N'PS1_1_2_1'
+--1_1_5_1
+set @ParameterName = N'Люфт в петлях створки'
+set @ParameterExID = N'PS1_1_5_1'
 set @tmp_ParameterExID = null
 set @sort = 1 
 
@@ -137,9 +137,9 @@ EXEC @return_value = [dbo].[ORD_SetOrderTemplatesParameter]
 	@ParameterSort = @sort
 
 -----------------------------------------------------------------------------------------------------
---1_1_1_2
-set @ParameterName = N'Износ верхней кромки'
-set @ParameterExID = N'PS1_1_2_2'
+--1_1_5_2
+set @ParameterName = N'Люфт в петлях пресс-крышки'
+set @ParameterExID = N'PS1_1_5_2'
 set @tmp_ParameterExID = null
 set @sort = 2 
 
@@ -201,9 +201,9 @@ EXEC @return_value = [dbo].[ORD_SetOrderTemplatesParameter]
 	@ParameterSort = @sort
   
 -----------------------------------------------------------------------------------------------------  
---1_1_1_3
-set @ParameterName =N'Вмятины'
-set @ParameterExID = N'PS1_1_2_3'
+--1_1_5_3
+set @ParameterName =N'Втулки петель'
+set @ParameterExID = N'PS1_1_5_3'
 set @tmp_ParameterExID = null
 set @sort = 3 
 
@@ -265,9 +265,9 @@ EXEC @return_value = [dbo].[ORD_SetOrderTemplatesParameter]
 	@ParameterSort = @sort
 
 -----------------------------------------------------------------------------------------------------  
---1_1_1_4
-set @ParameterName = N'Потеря геометрии'
-set @ParameterExID = N'PS1_1_2_4'
+--1_1_5_4
+set @ParameterName = N'Прочие дефекты'
+set @ParameterExID = N'PS1_1_5_4'
 set @tmp_ParameterExID = null
 set @sort = 4 
 
@@ -328,232 +328,9 @@ EXEC @return_value = [dbo].[ORD_SetOrderTemplatesParameter]
 	@ParameterExID = @ParameterExID,
 	@ParameterSort = @sort
 ----------------------------------------------------------------------------------------------------- 
---1_1_1_5
-set @ParameterName = N'Петли износ'
-set @ParameterExID = N'PS1_1_2_5'
-set @tmp_ParameterExID = null
-set @sort = 5 
-
-select @tmp_ParameterExID=ParameterExID from PAR_Parameters where ParameterName = @ParameterName
-
-if @tmp_ParameterExID is null
-begin
-    
-	set @ParameterID = null;
-	EXEC @return_value = [dbo].[PAR_SetParameter]
-	    @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterID = @ParameterID OUTPUT,
-	    @ParameterActiveFlag = 1,   
-		@ParameterSort = @sort,   
-		@ParameterExID =@ParameterExID,    
-		@ParameterName = @ParameterName,       
-		@ParameterShortName = @ParameterName,  
-		@ParTypeID = 1,   @UnitID = NULL,   @Required = 0,   @NormaMIN = NULL,   @NormaMAX = NULL,   @AllowedMIN = NULL,     @AllowedMAX = NULL,   @AlarmMIN = NULL,   @AlarmMAX = NULL,   @ForceAction = NULL,   @UnitExID = N'N/A';
-		
-end
-else
-begin
-	select @max = max(ParameterID)+1 from PAR_Parameters
-
-	insert into PAR_Parameters
-	select @max, 1, @sort, @ParameterExID, @ParameterName, @ParameterName,1, 116,0,null,null,null,null,null,null,null,0,60,1,0,0,1
-
-end
-
---Значения
-set @ParameterValueGUID = null;
-EXEC @return_value = [dbo].[PAR_SetParametersValue]
-    @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,     
-	@ParameterValueExID = N'1',   @ParameterID = NULL,       
-	@ParameterExID = @ParameterExID,   
-	@ParameterValueStr = N'Да',     
-	@ParameterValueDecimal = 1,   @ParameterValueSort = 1,   @ActiveFlag = 1;
-	
-set @ParameterValueGUID = null;	  
-EXEC @return_value = [dbo].[PAR_SetParametersValue]
-    @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,    
-	@ParameterValueExID = N'2',   @ParameterID = NULL,     
-	@ParameterExID = @ParameterExID,   
-	@ParameterValueStr = N'Нет',      
-	@ParameterValueDecimal = 2,   @ParameterValueSort = 2,   @ActiveFlag = 1;
-
--- парамер в группу
-EXEC @return_value = [dbo].[PAR_SetParameterPGroup]
-     @ErrorMessage = @ErrorMessage OUTPUT,      
-	 @ParameterID = NULL,   @PGroupID = NULL,      
-	 @ParameterExID = @ParameterExID,   
-	 @PGroupExID = @PGroupExID,        
-	 @DefaultLink = 1,   @LinkActiveFlag = 1;
---параметр в шаблон
-EXEC @return_value = [dbo].[ORD_SetOrderTemplatesParameter]
-	@ErrorMessage = @ErrorMessage OUTPUT, 
-	@OrderGUID = NULL, @ParameterID = NULL,  @ParameterRequired = 1, @ParameterActiveFlag = 1, @PGroupID = NULL, @PGroupExID = NULL,
-	@OrderExID = @OrderExID,
-	@ParameterExID = @ParameterExID,
-	@ParameterSort = @sort
 
 ----------------------------------------------------------------------------------------------------- 
---1_1_1_6
-	--1_1_1_6_1
-set @ParameterName = N'Зазоры у толкателя'
-set @ParameterExID = N'PS1_1_2_6_1'
-set @tmp_ParameterExID = null
-set @sort = 6
-
-select @tmp_ParameterExID=ParameterExID from PAR_Parameters where ParameterName = @ParameterName
-
-if @tmp_ParameterExID is null
-begin
-    
-	set @ParameterID = null;
-	EXEC @return_value = [dbo].[PAR_SetParameter]
-	    @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterID = @ParameterID OUTPUT,
-	    @ParameterActiveFlag = 1,   
-		@ParameterSort = @sort,   
-		@ParameterExID =@ParameterExID,    
-		@ParameterName = @ParameterName,       
-		@ParameterShortName = @ParameterName,  
-		@ParTypeID = 2,   
-		@UnitID = NULL,   @Required = 0,   @NormaMIN = NULL,   @NormaMAX = NULL,   @AllowedMIN = NULL,     @AllowedMAX = NULL,   @AlarmMIN = NULL,   @AlarmMAX = NULL,   @ForceAction = NULL,   
-		@UnitExID = N'121';
-		
-end
-else
-begin
-	select @max = max(ParameterID)+1 from PAR_Parameters
-
-	insert into PAR_Parameters
-	select @max, 1, @sort, @ParameterExID, @ParameterName, @ParameterName,2,  37,0,null,null,null,null,null,null,null,0,60,1,0,0,1
-
-end
-
--- парамер в группу
-EXEC @return_value = [dbo].[PAR_SetParameterPGroup]
-     @ErrorMessage = @ErrorMessage OUTPUT,      
-	 @ParameterID = NULL,   @PGroupID = NULL,      
-	 @ParameterExID = @ParameterExID,   
-	 @PGroupExID = @PGroupExID,        
-	 @DefaultLink = 1,   @LinkActiveFlag = 1;
---параметр в шаблон
-EXEC @return_value = [dbo].[ORD_SetOrderTemplatesParameter]
-	@ErrorMessage = @ErrorMessage OUTPUT, 
-	@OrderGUID = NULL, @ParameterID = NULL,  @ParameterRequired = 1, @ParameterActiveFlag = 1, @PGroupID = NULL, @PGroupExID = NULL,
-	@OrderExID = @OrderExID,
-	@ParameterExID = @ParameterExID,
-	@ParameterSort = @sort
-
-	--1_1_1_6_2
-set @ParameterName = N'Зазоры у трамбовки'
-set @ParameterExID = N'PS1_1_2_6_2'
-set @tmp_ParameterExID = null
-set @sort = 7 
-
-select @tmp_ParameterExID=ParameterExID from PAR_Parameters where ParameterName = @ParameterName
-
-if @tmp_ParameterExID is null
-begin
-    
-	set @ParameterID = null;
-	EXEC @return_value = [dbo].[PAR_SetParameter]
-	    @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterID = @ParameterID OUTPUT,
-	    @ParameterActiveFlag = 1,   
-		@ParameterSort = @sort,   
-		@ParameterExID =@ParameterExID,    
-		@ParameterName = @ParameterName,       
-		@ParameterShortName = @ParameterName,  
-		@ParTypeID = 2,   
-		@UnitID = NULL,   @Required = 0,   @NormaMIN = NULL,   @NormaMAX = NULL,   @AllowedMIN = NULL,     @AllowedMAX = NULL,   @AlarmMIN = NULL,   @AlarmMAX = NULL,   @ForceAction = NULL,   
-		@UnitExID = N'121';
-		
-end
-else
-begin
-	select @max = max(ParameterID)+1 from PAR_Parameters
-
-	insert into PAR_Parameters
-	select @max, 1, @sort, @ParameterExID, @ParameterName, @ParameterName,2,  37,0,null,null,null,null,null,null,null,0,60,1,0,0,1
-
-end
-
--- парамер в группу
-EXEC @return_value = [dbo].[PAR_SetParameterPGroup]
-     @ErrorMessage = @ErrorMessage OUTPUT,      
-	 @ParameterID = NULL,   @PGroupID = NULL,      
-	 @ParameterExID = @ParameterExID,   
-	 @PGroupExID = @PGroupExID,        
-	 @DefaultLink = 1,   @LinkActiveFlag = 1;
---параметр в шаблон
-EXEC @return_value = [dbo].[ORD_SetOrderTemplatesParameter]
-	@ErrorMessage = @ErrorMessage OUTPUT, 
-	@OrderGUID = NULL, @ParameterID = NULL,  @ParameterRequired = 1, @ParameterActiveFlag = 1, @PGroupID = NULL, @PGroupExID = NULL,
-	@OrderExID = @OrderExID,
-	@ParameterExID = @ParameterExID,
-	@ParameterSort = @sort
-
- ----------------------------------------------------------------------------------------------------- 
---1_1_1_7
-set @ParameterName = N'Прочие дефекты'
-set @ParameterExID = N'PS1_1_2_7'
-set @tmp_ParameterExID = null
-set @sort = 8 
-
-select @tmp_ParameterExID=ParameterExID from PAR_Parameters where ParameterName = @ParameterName
-
-if @tmp_ParameterExID is null
-begin
-    
-	set @ParameterID = null;
-	EXEC @return_value = [dbo].[PAR_SetParameter]
-	    @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterID = @ParameterID OUTPUT,
-	    @ParameterActiveFlag = 1,   
-		@ParameterSort = @sort,   
-		@ParameterExID =@ParameterExID,    
-		@ParameterName = @ParameterName,       
-		@ParameterShortName = @ParameterName,  
-		@ParTypeID = 1,   @UnitID = NULL,   @Required = 0,   @NormaMIN = NULL,   @NormaMAX = NULL,   @AllowedMIN = NULL,     @AllowedMAX = NULL,   @AlarmMIN = NULL,   @AlarmMAX = NULL,   @ForceAction = NULL,   @UnitExID = N'N/A';
-		
-end
-else
-begin
-	select @max = max(ParameterID)+1 from PAR_Parameters
-
-	insert into PAR_Parameters
-	select @max, 1, @sort, @ParameterExID, @ParameterName, @ParameterName,1, 116,0,null,null,null,null,null,null,null,0,60,1,0,0,1
-
-end
-
---Значения
-set @ParameterValueGUID = null;
-EXEC @return_value = [dbo].[PAR_SetParametersValue]
-    @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,     
-	@ParameterValueExID = N'1',   @ParameterID = NULL,       
-	@ParameterExID = @ParameterExID,   
-	@ParameterValueStr = N'Да',     
-	@ParameterValueDecimal = 1,   @ParameterValueSort = 1,   @ActiveFlag = 1;
-	
-set @ParameterValueGUID = null;	  
-EXEC @return_value = [dbo].[PAR_SetParametersValue]
-    @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,    
-	@ParameterValueExID = N'2',   @ParameterID = NULL,     
-	@ParameterExID = @ParameterExID,   
-	@ParameterValueStr = N'Нет',      
-	@ParameterValueDecimal = 2,   @ParameterValueSort = 2,   @ActiveFlag = 1;
-
--- парамер в группу
-EXEC @return_value = [dbo].[PAR_SetParameterPGroup]
-     @ErrorMessage = @ErrorMessage OUTPUT,      
-	 @ParameterID = NULL,   @PGroupID = NULL,      
-	 @ParameterExID = @ParameterExID,   
-	 @PGroupExID = @PGroupExID,        
-	 @DefaultLink = 1,   @LinkActiveFlag = 1;
---параметр в шаблон
-EXEC @return_value = [dbo].[ORD_SetOrderTemplatesParameter]
-	@ErrorMessage = @ErrorMessage OUTPUT, 
-	@OrderGUID = NULL, @ParameterID = NULL,  @ParameterRequired = 1, @ParameterActiveFlag = 1, @PGroupID = NULL, @PGroupExID = NULL,
-	@OrderExID = @OrderExID,
-	@ParameterExID = @ParameterExID,
-	@ParameterSort = @sort
------------------------------------------------------------------------------------------------------ 
---КОНЕЦ ГРУППЫ ПАРАМЕТРОВ 1_1_1
+--КОНЕЦ ГРУППЫ ПАРАМЕТРОВ 1_1_5
 -----------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------
 --Проверки

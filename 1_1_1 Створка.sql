@@ -90,7 +90,7 @@ begin
 		    @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,     
 			@ParameterValueExID = N'1',   @ParameterID = NULL,       
 			@ParameterExID = @ParameterExID,   --!!!!!
-			@ParameterValueStr = N'Норма',     
+			@ParameterValueStr = N'Да',     
 			@ParameterValueDecimal = 1,   @ParameterValueSort = 1,   @ActiveFlag = 1;
 			
 		set @ParameterValueGUID = null;	  
@@ -98,7 +98,7 @@ begin
 		    @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,    
 			@ParameterValueExID = N'2',   @ParameterID = NULL,     
 			@ParameterExID = @ParameterExID,   --!!!!!
-			@ParameterValueStr = N'Отклонение',      
+			@ParameterValueStr = N'Нет',      
 			@ParameterValueDecimal = 2,   @ParameterValueSort = 2,   @ActiveFlag = 1;
 		
 		-- парамер в группу
@@ -151,7 +151,7 @@ begin
 		    @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,     
 			@ParameterValueExID = N'1',   @ParameterID = NULL,       
 			@ParameterExID = @ParameterExID,   --!!!!!
-			@ParameterValueStr = N'Норма',     
+			@ParameterValueStr = N'Да',     
 			@ParameterValueDecimal = 1,   @ParameterValueSort = 1,   @ActiveFlag = 1;
 			
 		set @ParameterValueGUID = null;	  
@@ -159,7 +159,7 @@ begin
 		    @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,    
 			@ParameterValueExID = N'2',   @ParameterID = NULL,     
 			@ParameterExID = @ParameterExID,   --!!!!!
-			@ParameterValueStr = N'Отклонение',      
+			@ParameterValueStr = N'Нет',      
 			@ParameterValueDecimal = 2,   @ParameterValueSort = 2,   @ActiveFlag = 1;
 		
 		-- парамер в группу
@@ -212,7 +212,7 @@ begin
 		    @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,     
 			@ParameterValueExID = N'1',   @ParameterID = NULL,       
 			@ParameterExID = @ParameterExID,   --!!!!!
-			@ParameterValueStr = N'Норма',     
+			@ParameterValueStr = N'Да',     
 			@ParameterValueDecimal = 1,   @ParameterValueSort = 1,   @ActiveFlag = 1;
 			
 		set @ParameterValueGUID = null;	  
@@ -220,7 +220,7 @@ begin
 		    @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,    
 			@ParameterValueExID = N'2',   @ParameterID = NULL,     
 			@ParameterExID = @ParameterExID,   --!!!!!
-			@ParameterValueStr = N'Отклонение',      
+			@ParameterValueStr = N'Нет',      
 			@ParameterValueDecimal = 2,   @ParameterValueSort = 2,   @ActiveFlag = 1;
 		
 		-- парамер в группу
@@ -273,7 +273,7 @@ begin
 		    @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,     
 			@ParameterValueExID = N'1',   @ParameterID = NULL,       
 			@ParameterExID = @ParameterExID,   --!!!!!
-			@ParameterValueStr = N'Норма',     
+			@ParameterValueStr = N'Да',     
 			@ParameterValueDecimal = 1,   @ParameterValueSort = 1,   @ActiveFlag = 1;
 			
 		set @ParameterValueGUID = null;	  
@@ -281,7 +281,7 @@ begin
 		    @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,    
 			@ParameterValueExID = N'2',   @ParameterID = NULL,     
 			@ParameterExID = @ParameterExID,   --!!!!!
-			@ParameterValueStr = N'Отклонение',      
+			@ParameterValueStr = N'Нет',      
 			@ParameterValueDecimal = 2,   @ParameterValueSort = 2,   @ActiveFlag = 1;
 		
 		-- парамер в группу
@@ -333,7 +333,7 @@ begin
 		    @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,     
 			@ParameterValueExID = N'1',   @ParameterID = NULL,       
 			@ParameterExID = @ParameterExID,   --!!!!!
-			@ParameterValueStr = N'Норма',     
+			@ParameterValueStr = N'Да',     
 			@ParameterValueDecimal = 1,   @ParameterValueSort = 1,   @ActiveFlag = 1;
 			
 		set @ParameterValueGUID = null;	  
@@ -341,7 +341,7 @@ begin
 		    @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,    
 			@ParameterValueExID = N'2',   @ParameterID = NULL,     
 			@ParameterExID = @ParameterExID,   --!!!!!
-			@ParameterValueStr = N'Отклонение',      
+			@ParameterValueStr = N'Нет',      
 			@ParameterValueDecimal = 2,   @ParameterValueSort = 2,   @ActiveFlag = 1;
 		
 		-- парамер в группу
@@ -479,7 +479,7 @@ begin
 		    @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,     
 			@ParameterValueExID = N'1',   @ParameterID = NULL,       
 			@ParameterExID = @ParameterExID,   --!!!!!
-			@ParameterValueStr = N'Норма',     
+			@ParameterValueStr = N'Да',     
 			@ParameterValueDecimal = 1,   @ParameterValueSort = 1,   @ActiveFlag = 1;
 			
 		set @ParameterValueGUID = null;	  
@@ -487,7 +487,7 @@ begin
 		    @ErrorMessage = @ErrorMessage OUTPUT,   @ParameterValueGUID = @ParameterValueGUID OUTPUT,    
 			@ParameterValueExID = N'2',   @ParameterID = NULL,     
 			@ParameterExID = @ParameterExID,   --!!!!!
-			@ParameterValueStr = N'Отклонение',      
+			@ParameterValueStr = N'Нет',      
 			@ParameterValueDecimal = 2,   @ParameterValueSort = 2,   @ActiveFlag = 1;
 		
 		-- парамер в группу
